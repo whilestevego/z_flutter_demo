@@ -65,20 +65,40 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0,
       ),
       body: Container(
-        color: Colors.blueAccent,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'You have pushed the button this many times:',
+        // color: Colors.blueAccent,
+        child: ListView(
+          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text('Product Revenue'),
+                          Container(
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                              padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                              child: Text(
+                                '+\$453k',
+                                style: TextStyle(color: Colors.white),
+                              ))
+                        ],
+                      )),
+                  Expanded(flex: 1, child: Text('\$6,571,367')),
+                  Text('...'),
+                ],
               ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.display1,
-              ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

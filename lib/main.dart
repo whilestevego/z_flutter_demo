@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'components/revenue_item.dart';
+import 'components/stat_list.dart';
+import 'constants.dart';
 
 void main() => runApp(MyApp());
+
+final themeGrey = Color.fromRGBO(248, 250, 251, 1);
+final themeBlue = Color.fromRGBO(0, 145, 204, 1);
 
 const menuItems = <Map<String, dynamic>>[
   {
@@ -26,6 +31,14 @@ const menuItems = <Map<String, dynamic>>[
   },
 ];
 
+const statListItems = <StatItem>[
+  // Isn't StatItem just duplicating _Stat component?
+  StatItem(term: 'Revenue', detail: '\$117,454', subDetail: '\$108,207'),
+  StatItem(term: 'Utilization', detail: '67%', subDetail: '54%'),
+  StatItem(term: 'Feedback', detail: '4.7', subDetail: '4.9'),
+  StatItem(term: 'Revenue', detail: '718', subDetail: '692'),
+];
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -34,7 +47,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page Stuff Thing'),
+      home: MyHomePage(title: 'Your Business Name'),
     );
   }
 }
@@ -60,15 +73,34 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: themeBlue,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Column(
+          children: <Widget>[
+            Text(widget.title, style: TextStyle(fontSize: 16.0)),
+            Text(
+              'Updated 1hr ago',
+              style: TextStyle(color: Colors.white38, fontSize: 12.0),
+            ),
+          ],
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size(0.0, 60.0),
+          child: Padding(
+            padding: EdgeInsets.all(spacer),
+            child: StatList(
+              items: statListItems,
+            ),
+          ),
+        ),
         backgroundColor: Color.fromRGBO(255, 255, 255, 0),
         elevation: 0,
       ),
       body: Container(
-        // color: Colors.blueAccent,
+        color: themeGrey,
         child: ListView(
-          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+          padding:
+              const EdgeInsets.only(left: spacer, right: spacer, top: spacer),
           children: <Widget>[
             RevenueItem(
               title: 'Product Revenue',
@@ -104,17 +136,19 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         showUnselectedLabels: true,
+        backgroundColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: themeBlue,
         items: menuItems
             .map(
               (item) => BottomNavigationBarItem(
                   icon: Icon(
                     item['icon'],
-                    color: Colors.grey,
                   ),
                   title: Text(
                     item['title'],
-                    style: TextStyle(color: Colors.grey),
                   )),
             )
             .toList(),

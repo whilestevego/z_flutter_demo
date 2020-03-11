@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:zenoti_assignment/components/pill.dart';
+import 'package:zenoti_assignment/constants.dart';
 
 class RevenueItem extends StatelessWidget {
   final String title;
@@ -21,11 +22,11 @@ class RevenueItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Container(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(spacer),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(
-            Radius.circular(5.0),
+            Radius.circular(borderRadius),
           ),
           boxShadow: [
             BoxShadow(

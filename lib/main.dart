@@ -61,51 +61,68 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: themeBlue,
-      appBar: AppBar(
-        title: Column(
-          children: <Widget>[
-            Text(widget.title, style: TextStyle(fontSize: 16.0)),
-            Text(
-              'Updated 1hr ago',
-              style: TextStyle(color: Colors.white38, fontSize: 12.0),
-            ),
-          ],
-        ),
-        bottom: PreferredSize(
-          preferredSize: Size(0.0, 80.0),
-          child: Padding(
-            padding: EdgeInsets.all(spacer),
-            child: StatList(
-              items: statListItems,
-            ),
+    return Stack(
+      children: <Widget>[
+        // Slight light to dark blue gradient in app bar area
+        Container(
+          height: 400.0,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromRGBO(51, 174, 220, 1),
+                  Color.fromRGBO(0, 129, 192, 1)
+                ]),
           ),
         ),
-        backgroundColor: Color.fromRGBO(255, 255, 255, 0),
-        elevation: 0,
-      ),
-      body: RevenueList(),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        elevation: 100,
-        showUnselectedLabels: true,
-        backgroundColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: themeBlue,
-        items: menuItems
-            .map(
-              (item) => BottomNavigationBarItem(
-                icon: Icon(
-                  item['icon'],
+        Scaffold(
+          backgroundColor: Color.fromRGBO(0, 0, 0, 0),
+          appBar: AppBar(
+            title: Column(
+              children: <Widget>[
+                Text(widget.title, style: TextStyle(fontSize: 16.0)),
+                Text(
+                  'Updated 1hr ago',
+                  style: TextStyle(color: Colors.white38, fontSize: 12.0),
                 ),
-                title: Text(
-                  item['title'],
+              ],
+            ),
+            bottom: PreferredSize(
+              preferredSize: Size(0.0, 80.0),
+              child: Padding(
+                padding: EdgeInsets.all(spacer),
+                child: StatList(
+                  items: statListItems,
                 ),
               ),
-            )
-            .toList(),
-      ),
+            ),
+            backgroundColor: Color.fromRGBO(255, 255, 255, 0),
+            elevation: 0,
+          ),
+          body: RevenueList(),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            elevation: 100,
+            showUnselectedLabels: true,
+            backgroundColor: Colors.white,
+            unselectedItemColor: Colors.grey,
+            selectedItemColor: themeBlue,
+            items: menuItems
+                .map(
+                  (item) => BottomNavigationBarItem(
+                    icon: Icon(
+                      item['icon'],
+                    ),
+                    title: Text(
+                      item['title'],
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      ],
     );
   }
 }

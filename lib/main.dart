@@ -77,7 +77,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         Scaffold(
-          backgroundColor: Color.fromRGBO(0, 0, 0, 0),
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Column(
               children: <Widget>[
@@ -97,7 +97,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
             ),
-            backgroundColor: Color.fromRGBO(255, 255, 255, 0),
+            backgroundColor: Colors.transparent,
             elevation: 0,
           ),
           body: RevenueList(),

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'components/revenue_item.dart';
-import 'components/stat_list.dart';
+import 'package:zenoti_assignment/components/revenue_list.dart';
+import 'package:zenoti_assignment/components/stat_list.dart';
 import 'constants.dart';
 
 void main() => runApp(MyApp());
-
-final themeGrey = Color.fromRGBO(248, 250, 251, 1);
-final themeBlue = Color.fromRGBO(0, 145, 204, 1);
 
 const menuItems = <Map<String, dynamic>>[
   {
@@ -62,7 +59,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  // int _counter = 0;
 
   // void _incrementCounter() {
   //   setState(() {
@@ -85,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         bottom: PreferredSize(
-          preferredSize: Size(0.0, 60.0),
+          preferredSize: Size(0.0, 80.0),
           child: Padding(
             padding: EdgeInsets.all(spacer),
             child: StatList(
@@ -96,47 +93,10 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Color.fromRGBO(255, 255, 255, 0),
         elevation: 0,
       ),
-      body: Container(
-        color: themeGrey,
-        child: ListView(
-          padding:
-              const EdgeInsets.only(left: spacer, right: spacer, top: spacer),
-          children: <Widget>[
-            RevenueItem(
-              title: 'Product Revenue',
-              amount: 6571367,
-              previousAmount: 6231367,
-            ),
-            RevenueItem(
-              title: 'Product Revenue',
-              amount: 6571367,
-              previousAmount: 6231367,
-            ),
-            RevenueItem(
-              title: 'Product Revenue',
-              amount: 6571367,
-              previousAmount: 6231367,
-            ),
-            RevenueItem(
-              title: 'Product Revenue',
-              amount: 6571367,
-              previousAmount: 6231367,
-            ),
-            RevenueItem(
-              title: 'Product Revenue',
-              amount: 6571367,
-              previousAmount: 6231367,
-            ),
-            RevenueItem(
-              title: 'Product Revenue',
-              amount: 6571367,
-              previousAmount: 6231367,
-            ),
-          ],
-        ),
-      ),
+      body: RevenueList(),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        elevation: 100,
         showUnselectedLabels: true,
         backgroundColor: Colors.white,
         unselectedItemColor: Colors.grey,
@@ -144,12 +104,13 @@ class _MyHomePageState extends State<MyHomePage> {
         items: menuItems
             .map(
               (item) => BottomNavigationBarItem(
-                  icon: Icon(
-                    item['icon'],
-                  ),
-                  title: Text(
-                    item['title'],
-                  )),
+                icon: Icon(
+                  item['icon'],
+                ),
+                title: Text(
+                  item['title'],
+                ),
+              ),
             )
             .toList(),
       ),

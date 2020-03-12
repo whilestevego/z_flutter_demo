@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 
 class StatItem {
@@ -23,7 +22,7 @@ class StatList extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(spacer),
       decoration: BoxDecoration(
-        color: Colors.white24,
+        color: Colors.white30,
         borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
       ),
       child: Row(
@@ -61,10 +60,12 @@ class _Stat extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
           ),
+          Divider(height: spacer, color: Color.fromRGBO(255, 255, 255, 0)),
           Text(
             detail,
             style: TextStyle(color: Colors.white, fontSize: 16),
           ),
+          Divider(height: spacer, color: Color.fromRGBO(255, 255, 255, 0)),
           Text(
             subDetail,
             style: TextStyle(color: Colors.white54, fontSize: 13),

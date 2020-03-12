@@ -3,7 +3,7 @@ import 'package:zenoti_assignment/components/revenue_list.dart';
 import 'package:zenoti_assignment/components/stat_list.dart';
 import 'constants.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
 const menuItems = <Map<String, dynamic>>[
   {
@@ -36,7 +36,7 @@ const statListItems = <StatItem>[
   StatItem(term: 'Guests', detail: '718', subDetail: '692'),
 ];
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,21 +44,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Your Business Name'),
+      home: MainScreen(title: 'Your Business Name'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  MainScreen({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

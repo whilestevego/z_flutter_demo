@@ -37,6 +37,7 @@ class RevenueItem extends StatelessWidget {
             )
           ],
         ),
+        // TODO: Replace the following content with a Table widget
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -46,14 +47,49 @@ class RevenueItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(title),
-                    Pill(
-                      text: '+\$453k',
-                      backgroundColor: Colors.redAccent,
+                    Container(height: spacer),
+                    Row(
+                      children: <Widget>[
+                        Pill(
+                          text: '+\$453k',
+                          backgroundColor: Colors.redAccent,
+                        ),
+                        Container(width: spacer),
+                        Text(
+                          'From May 8 - May 14',
+                          style: TextStyle(
+                            color: Colors.black38,
+                            fontSize: 10.0,
+                          ),
+                        )
+                      ],
                     )
                   ],
                 )),
-            Expanded(flex: 1, child: Text(f.format(amount))),
-            Text('...'),
+            Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    Text(f.format(amount)),
+                    Container(height: spacer),
+                    Text(f.format(previousAmount),
+                        style: TextStyle(
+                          color: Colors.black38,
+                          fontSize: 13,
+                        )),
+                  ],
+                )),
+            Padding(
+              padding: const EdgeInsets.only(left: spacer),
+              child: Text(
+                '...',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black38,
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -33,7 +33,7 @@ const statListItems = <StatItem>[
   StatItem(term: 'Revenue', detail: '\$117,454', subDetail: '\$108,207'),
   StatItem(term: 'Utilization', detail: '67%', subDetail: '54%'),
   StatItem(term: 'Feedback', detail: '4.7', subDetail: '4.9'),
-  StatItem(term: 'Revenue', detail: '718', subDetail: '692'),
+  StatItem(term: 'Guests', detail: '718', subDetail: '692'),
 ];
 
 class MyApp extends StatelessWidget {

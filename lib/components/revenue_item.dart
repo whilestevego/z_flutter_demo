@@ -30,8 +30,8 @@ class RevenueItem extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
-              offset: Offset(0, 2.0),
+              color: Color.fromRGBO(0, 0, 0, 0.05),
+              offset: Offset(0, 1.0),
               spreadRadius: 1,
               blurRadius: 3,
             )

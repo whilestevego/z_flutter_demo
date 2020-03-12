@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zenoti_assignment/components/revenue_item.dart';
+import 'package:zenoti_assignment/components/revenue_item_metrics.dart';
 import 'package:zenoti_assignment/components/revenue_list_filter_bar.dart';
 import '../constants.dart';
 
@@ -10,23 +11,24 @@ class RevenueList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: <Widget>[
-        Column(
-          children: <Widget>[
-            SizedBox(height: 75.0),
-            Expanded(child: Container(color: themeGrey))
-          ],
+        RevenueItemMetrics(),
+        Padding(
+          padding: EdgeInsets.fromLTRB(spacer, 0, spacer, 0),
+          child: RevenueListFilterBar(),
         ),
-        Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.fromLTRB(spacer, 0, spacer, 0),
-              child: RevenueListFilterBar(),
-            ),
-            Expanded(
-              // Fading effect at top of ListView
-              child: ShaderMask(
+        Expanded(
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  SizedBox(height: 50.0),
+                  Expanded(child: Container(color: themeGrey))
+                ],
+              ),
+              ShaderMask(
                 blendMode: BlendMode.dstIn,
                 shaderCallback: (Rect bounds) => LinearGradient(
                   begin: Alignment.topCenter,
@@ -54,8 +56,8 @@ class RevenueList extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

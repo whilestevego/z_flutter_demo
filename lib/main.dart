@@ -65,14 +65,14 @@ class _MainScreenState extends State<MainScreen> {
       children: <Widget>[
         // Slight light to dark blue gradient in app bar area
         Container(
-          height: 400.0,
+          height: 650.0,
           decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color.fromRGBO(51, 174, 220, 1),
-                  Color.fromRGBO(0, 129, 192, 1)
+                  Color.fromRGBO(53, 177, 223, 1),
+                  Color.fromRGBO(0, 124, 192, 1)
                 ]),
           ),
         ),

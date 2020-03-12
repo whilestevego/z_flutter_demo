@@ -14,7 +14,7 @@ class RevenueList extends StatelessWidget {
       children: <Widget>[
         Column(
           children: <Widget>[
-            Container(height: 75.0),
+            SizedBox(height: 75.0),
             Expanded(child: Container(color: themeGrey))
           ],
         ),

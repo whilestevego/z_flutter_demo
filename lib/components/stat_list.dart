@@ -60,12 +60,12 @@ class _Stat extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
           ),
-          Divider(height: spacer, color: Color.fromRGBO(255, 255, 255, 0)),
+          SizedBox(height: spacer),
           Text(
             detail,
             style: TextStyle(color: Colors.white, fontSize: 16),
           ),
-          Divider(height: spacer, color: Color.fromRGBO(255, 255, 255, 0)),
+          SizedBox(height: spacer),
           Text(
             subDetail,
             style: TextStyle(color: Colors.white54, fontSize: 13),

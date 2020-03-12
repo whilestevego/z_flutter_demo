@@ -47,14 +47,14 @@ class RevenueItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(title),
-                    Container(height: spacer),
+                    SizedBox(height: spacer),
                     Row(
                       children: <Widget>[
                         Pill(
                           text: '+\$453k',
                           backgroundColor: Colors.redAccent,
                         ),
-                        Container(width: spacer),
+                        SizedBox(width: spacer),
                         Text(
                           'From May 8 - May 14',
                           style: TextStyle(
@@ -72,7 +72,7 @@ class RevenueItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     Text(f.format(amount)),
-                    Container(height: spacer),
+                    SizedBox(height: spacer),
                     Text(f.format(previousAmount),
                         style: TextStyle(
                           color: Colors.black38,

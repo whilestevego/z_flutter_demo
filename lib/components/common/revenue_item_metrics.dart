@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:zenoti_assignment/components/common/metrics_data_summary.dart';
@@ -5,30 +7,40 @@ import 'package:zenoti_assignment/components/common/metrics_chart.dart';
 import 'package:zenoti_assignment/constants.dart';
 import 'package:zenoti_assignment/models/revenue.dart';
 
-final spots = const [
-  FlSpot(1, 1),
-  FlSpot(2, 0.5),
-  FlSpot(3, 1.44),
-  FlSpot(4, 1.4),
-  FlSpot(5, 0.6),
-  FlSpot(6, 0.3),
-];
-
-final spots2 = const [
-  FlSpot(1, 0.2),
-  FlSpot(2, 0.8),
-  FlSpot(3, 2.3),
-  FlSpot(4, 1.0),
-  FlSpot(5, 0.6),
-  FlSpot(6, 1.0),
-];
+var random = Random();
+List<FlSpot> spots;
+List<FlSpot> spots2;
 
 class RevenueItemMetrics extends StatelessWidget {
   final Revenue revenue;
   const RevenueItemMetrics({Key key, this.revenue}) : super(key: key);
 
+  // Yes, this is bad. Given more time I would pass this data down from
+  // a source as a prop.
+  void _generateSpots() {
+    spots = [
+      FlSpot(1, random.nextDouble() * 5),
+      FlSpot(2, random.nextDouble() * 5),
+      FlSpot(3, random.nextDouble() * 5),
+      FlSpot(4, random.nextDouble() * 5),
+      FlSpot(5, random.nextDouble() * 5),
+      FlSpot(6, random.nextDouble() * 5),
+    ];
+
+    spots2 = [
+      FlSpot(1, random.nextDouble() * 5),
+      FlSpot(2, random.nextDouble() * 5),
+      FlSpot(3, random.nextDouble() * 5),
+      FlSpot(4, random.nextDouble() * 5),
+      FlSpot(5, random.nextDouble() * 5),
+      FlSpot(6, random.nextDouble() * 5),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
+    _generateSpots();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

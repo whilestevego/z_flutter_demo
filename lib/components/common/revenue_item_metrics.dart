@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:zenoti_assignment/components/metrics_data_summary.dart';
-import 'package:zenoti_assignment/components/metrics_chart.dart';
+import 'package:zenoti_assignment/components/common/metrics_data_summary.dart';
+import 'package:zenoti_assignment/components/common/metrics_chart.dart';
 import 'package:zenoti_assignment/constants.dart';
 
 final spots = const [

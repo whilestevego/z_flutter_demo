@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:zenoti_assignment/constants.dart';
 
 class StatItem {
   final String term;

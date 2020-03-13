@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:zenoti_assignment/components/pill.dart';
+import 'package:zenoti_assignment/components/common/pill.dart';
 import 'package:zenoti_assignment/constants.dart';
 
 class RevenueItem extends StatelessWidget {

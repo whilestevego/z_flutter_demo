@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:zenoti_assignment/components/revenue_item.dart';
-import 'package:zenoti_assignment/components/revenue_item_metrics.dart';
-import 'package:zenoti_assignment/components/revenue_list_filter_bar.dart';
-import '../constants.dart';
+import 'package:zenoti_assignment/components/common/revenue_item.dart';
+import 'package:zenoti_assignment/components/common/revenue_item_metrics.dart';
+import 'package:zenoti_assignment/components/common/revenue_list_filter_bar.dart';
+import 'package:zenoti_assignment/constants.dart';
 
 class RevenueList extends StatelessWidget {
   const RevenueList({

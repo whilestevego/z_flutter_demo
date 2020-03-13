@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zenoti_assignment/components/pill.dart';
+import 'package:zenoti_assignment/components/common/pill.dart';
 
 class RevenueListFilterBar extends StatelessWidget {
   const RevenueListFilterBar({

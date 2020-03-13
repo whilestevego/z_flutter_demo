@@ -33,8 +33,8 @@ class MetricsDataSummary extends StatelessWidget {
           ),
           _DateAndValue(
             value: previousAmount,
-            startAt: startAt,
-            endAt: endAt,
+            startAt: startAt.subtract(Duration(days: 7)),
+            endAt: startAt.subtract(Duration(days: 1)),
             color: Colors.white38,
             fontSize: 24,
           ),

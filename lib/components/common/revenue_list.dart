@@ -5,9 +5,15 @@ import 'package:zenoti_assignment/components/common/revenue_item.dart';
 import 'package:zenoti_assignment/components/common/revenue_item_metrics.dart';
 import 'package:zenoti_assignment/components/common/revenue_list_filter_bar.dart';
 import 'package:zenoti_assignment/constants.dart';
+import 'package:zenoti_assignment/mock_data.dart';
+
+typedef Revenue RevenueBuilder(int index);
 
 class RevenueList extends StatelessWidget {
+  final RevenueBuilder revenueBuilder;
+
   const RevenueList({
+    this.revenueBuilder = generateRevenue,
     Key key,
   }) : super(key: key);
 
@@ -35,18 +41,20 @@ class RevenueList extends StatelessWidget {
                 padding: const EdgeInsets.only(left: spacer, right: spacer),
                 // Randomly generate up to 100 items
                 itemCount: 100,
-                itemBuilder: (ctx, i) => RevenueItem(
-                  onTap: () {
-                    log("Index: $i");
-                  },
-                  title: [
-                    'Product Revenue',
-                    'Avg. Ticket Size',
-                    'Avg. Invoice Value'
-                  ][i % 3],
-                  amount: 6571367,
-                  previousAmount: 6231367,
-                ),
+                itemBuilder: (_, i) {
+                  var rev = revenueBuilder(i);
+
+                  return RevenueItem(
+                    onTap: () {
+                      log("Index: $i");
+                    },
+                    title: rev.title,
+                    amount: rev.amount,
+                    previousAmount: rev.previousAmount,
+                    startAt: rev.startAt,
+                    endAt: rev.endAt,
+                  );
+                },
               ),
             ],
           ),

@@ -7,6 +7,8 @@ class RevenueItem extends StatelessWidget {
   final String title;
   final num amount;
   final num previousAmount;
+  final DateTime startAt;
+  final DateTime endAt;
   final Function() onTap;
 
   const RevenueItem({
@@ -14,12 +16,16 @@ class RevenueItem extends StatelessWidget {
     @required this.title,
     @required this.amount,
     @required this.previousAmount,
+    @required this.startAt,
+    @required this.endAt,
     this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var f = NumberFormat("\$###,###", "en_CA");
+    var monthDay = DateFormat('MMMd');
+    var delta = amount - previousAmount;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: spacer),
@@ -46,12 +52,15 @@ class RevenueItem extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Pill(
-                              text: '+\$453k',
-                              backgroundColor: Colors.redAccent,
+                              text: NumberFormat.compact()
+                                  .format(delta)
+                                  .toString(),
+                              backgroundColor:
+                                  delta > 0 ? Colors.green : Colors.redAccent,
                             ),
                             SizedBox(width: spacer),
                             Text(
-                              'From May 8 - May 14',
+                              'From ${monthDay.format(startAt)} - ${monthDay.format(endAt)}',
                               style: TextStyle(
                                 color: Colors.black38,
                                 fontSize: 10.0,

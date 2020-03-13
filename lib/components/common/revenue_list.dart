@@ -13,12 +13,16 @@ class RevenueList extends StatelessWidget {
   final Revenue selectedRev;
   final Function(Revenue) onItemTap;
   final Function() onCloseTap;
+  final Function(DateTime) onSelectDate;
+  final DateTime activeDate;
 
   const RevenueList({
+    this.activeDate,
     this.revenueBuilder = generateRevenue,
     this.selectedRev,
     this.onItemTap,
     this.onCloseTap,
+    this.onSelectDate,
     Key key,
   }) : super(key: key);
 
@@ -29,7 +33,11 @@ class RevenueList extends StatelessWidget {
         if (selectedRev != null) RevenueItemMetrics(revenue: selectedRev),
         Padding(
           padding: EdgeInsets.fromLTRB(spacer, 0, spacer, spacer),
-          child: RevenueListFilterBar(onCloseTap: onCloseTap),
+          child: RevenueListFilterBar(
+            activeDate: activeDate,
+            onCloseTap: onCloseTap,
+            onSelectDate: onSelectDate,
+          ),
         ),
         Expanded(
           child: Stack(

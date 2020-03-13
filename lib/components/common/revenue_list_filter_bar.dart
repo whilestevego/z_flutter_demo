@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:zenoti_assignment/components/common/pill.dart';
+import 'package:zenoti_assignment/formatters.dart';
 
 class RevenueListFilterBar extends StatelessWidget {
+  final DateTime activeDate;
   final Function() onCloseTap;
+  final Function(DateTime) onSelectDate;
 
   const RevenueListFilterBar({
     Key key,
     this.onCloseTap,
+    this.onSelectDate,
+    this.activeDate,
   }) : super(key: key);
 
   @override
@@ -43,9 +49,25 @@ class RevenueListFilterBar extends StatelessWidget {
         ),
         Expanded(
           flex: 1,
-          child: Container(
-            alignment: Alignment.centerRight,
-            child: _TransparentPill(text: 'AUG \'20'),
+          child: GestureDetector(
+            onTap: () async {
+              if (onSelectDate != null) {
+                var initialDate = activeDate ?? DateTime.now();
+
+                onSelectDate(await showMonthPicker(
+                  context: context,
+                  initialDate: initialDate,
+                  firstDate: DateTime(initialDate.year - 20),
+                  lastDate: DateTime(initialDate.year),
+                ));
+              }
+            },
+            child: Container(
+              alignment: Alignment.centerRight,
+              child: _TransparentPill(
+                text: fMonthYear.format(activeDate ?? DateTime.now()),
+              ),
+            ),
           ),
         )
       ],

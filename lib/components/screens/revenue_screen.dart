@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:zenoti_assignment/components/common/revenue_list.dart';
 import 'package:zenoti_assignment/components/common/stat_list.dart';
@@ -45,6 +47,14 @@ class RevenueScreen extends StatefulWidget {
 
 class _MainScreenState extends State<RevenueScreen> {
   Revenue selectedRev;
+  DateTime activeDate;
+
+  @override
+  void initState() {
+    super.initState();
+
+    activeDate = DateTime.now();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +98,7 @@ class _MainScreenState extends State<RevenueScreen> {
             elevation: 0,
           ),
           body: RevenueList(
+            activeDate: activeDate,
             selectedRev: selectedRev,
             onCloseTap: () {
               setState(() {
@@ -97,6 +108,11 @@ class _MainScreenState extends State<RevenueScreen> {
             onItemTap: (i) {
               setState(() {
                 selectedRev = i;
+              });
+            },
+            onSelectDate: (date) {
+              setState(() {
+                activeDate = date;
               });
             },
           ),

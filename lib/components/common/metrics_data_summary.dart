@@ -8,13 +8,14 @@ class MetricsDataSummary extends StatelessWidget {
     return SizedBox(
       width: 150,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _DateAndValue(),
           Divider(
             color: Colors.white38,
             thickness: 1,
           ),
-          _DateAndValue(color: Colors.white38),
+          _DateAndValue(color: Colors.white38, fontSize: 24),
         ],
       ),
     );
@@ -23,8 +24,13 @@ class MetricsDataSummary extends StatelessWidget {
 
 class _DateAndValue extends StatelessWidget {
   final Color color;
+  final double fontSize;
 
-  const _DateAndValue({Key key, this.color = Colors.white}) : super(key: key);
+  const _DateAndValue({
+    Key key,
+    this.color = Colors.white,
+    this.fontSize = 28,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +47,7 @@ class _DateAndValue extends StatelessWidget {
         Text(
           '\$6,571,367',
           style: TextStyle(
-            fontSize: 28,
+            fontSize: fontSize,
             color: color,
           ),
         ),

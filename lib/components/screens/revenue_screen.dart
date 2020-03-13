@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:zenoti_assignment/components/common/drawer_menu.dart';
 import 'package:zenoti_assignment/components/common/revenue_list.dart';
 import 'package:zenoti_assignment/components/common/stat_list.dart';
 import 'package:zenoti_assignment/constants.dart';
@@ -46,6 +47,7 @@ class RevenueScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<RevenueScreen> {
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   Revenue selectedRev;
   DateTime activeDate;
 
@@ -74,7 +76,9 @@ class _MainScreenState extends State<RevenueScreen> {
           ),
         ),
         Scaffold(
+          key: _scaffoldKey,
           backgroundColor: Colors.transparent,
+          drawer: DrawerMenu(),
           appBar: AppBar(
             title: Column(
               children: <Widget>[
@@ -123,6 +127,14 @@ class _MainScreenState extends State<RevenueScreen> {
             backgroundColor: Colors.white,
             unselectedItemColor: Colors.grey,
             selectedItemColor: themeBlue,
+            onTap: (index) {
+              log('Index: $index');
+              if (_scaffoldKey.currentState.isDrawerOpen) {
+                _scaffoldKey.currentState.openEndDrawer();
+              } else {
+                _scaffoldKey.currentState.openDrawer();
+              }
+            },
             items: menuItems
                 .map(
                   (item) => BottomNavigationBarItem(

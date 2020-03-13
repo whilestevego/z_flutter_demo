@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zenoti_assignment/components/common/metrics_data_summary.dart';
 import 'package:zenoti_assignment/components/common/metrics_chart.dart';
 import 'package:zenoti_assignment/constants.dart';
+import 'package:zenoti_assignment/models/revenue.dart';
 
 final spots = const [
   FlSpot(1, 1),
@@ -23,7 +24,8 @@ final spots2 = const [
 ];
 
 class RevenueItemMetrics extends StatelessWidget {
-  const RevenueItemMetrics({Key key}) : super(key: key);
+  final Revenue revenue;
+  const RevenueItemMetrics({Key key, this.revenue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,12 @@ class RevenueItemMetrics extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.fromLTRB(spacer * 2, 0, spacer * 2, spacer),
-          child: MetricsDataSummary(),
+          child: MetricsDataSummary(
+            startAt: revenue.startAt,
+            endAt: revenue.endAt,
+            amount: revenue.amount,
+            previousAmount: revenue.previousAmount,
+          ),
         ),
         SizedBox(
           height: 200,

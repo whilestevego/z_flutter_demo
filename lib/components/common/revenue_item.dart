@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:zenoti_assignment/components/common/pill.dart';
 import 'package:zenoti_assignment/constants.dart';
+import 'package:zenoti_assignment/formatters.dart';
 
 class RevenueItem extends StatelessWidget {
   final String title;
@@ -23,8 +24,6 @@ class RevenueItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var f = NumberFormat("\$###,###", "en_CA");
-    var monthDay = DateFormat('MMMd');
     var delta = amount - previousAmount;
 
     return Padding(
@@ -60,7 +59,7 @@ class RevenueItem extends StatelessWidget {
                             ),
                             SizedBox(width: spacer),
                             Text(
-                              'From ${monthDay.format(startAt)} - ${monthDay.format(endAt)}',
+                              'From ${fMonthDay.format(startAt)} - ${fMonthDay.format(endAt)}',
                               style: TextStyle(
                                 color: Colors.black38,
                                 fontSize: 10.0,
@@ -75,9 +74,9 @@ class RevenueItem extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        Text(f.format(amount)),
+                        Text(fCurrency.format(amount)),
                         SizedBox(height: spacer),
-                        Text(f.format(previousAmount),
+                        Text(fCurrency.format(previousAmount),
                             style: TextStyle(
                               color: Colors.black38,
                               fontSize: 13,

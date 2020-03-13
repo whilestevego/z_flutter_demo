@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zenoti_assignment/components/common/revenue_list.dart';
 import 'package:zenoti_assignment/components/common/stat_list.dart';
 import 'package:zenoti_assignment/constants.dart';
+import 'package:zenoti_assignment/models/revenue.dart';
 
 const menuItems = <Map<String, dynamic>>[
   {
@@ -27,7 +28,6 @@ const menuItems = <Map<String, dynamic>>[
 ];
 
 const statListItems = <StatItem>[
-  // Isn't StatItem just duplicating _Stat component?
   StatItem(term: 'Revenue', detail: '\$117,454', subDetail: '\$108,207'),
   StatItem(term: 'Utilization', detail: '67%', subDetail: '54%'),
   StatItem(term: 'Feedback', detail: '4.7', subDetail: '4.9'),
@@ -35,15 +35,17 @@ const statListItems = <StatItem>[
 ];
 
 class RevenueScreen extends StatefulWidget {
-  RevenueScreen({Key key, this.title}) : super(key: key);
-
   final String title;
+
+  RevenueScreen({Key key, this.title}) : super(key: key);
 
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<RevenueScreen> {
+  Revenue selectedRev;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -85,7 +87,19 @@ class _MainScreenState extends State<RevenueScreen> {
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
-          body: RevenueList(),
+          body: RevenueList(
+            selectedRev: selectedRev,
+            onCloseTap: () {
+              setState(() {
+                selectedRev = null;
+              });
+            },
+            onItemTap: (i) {
+              setState(() {
+                selectedRev = i;
+              });
+            },
+          ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             elevation: 100,

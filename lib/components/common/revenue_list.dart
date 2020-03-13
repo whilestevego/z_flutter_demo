@@ -1,19 +1,24 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:zenoti_assignment/components/common/revenue_item.dart';
 import 'package:zenoti_assignment/components/common/revenue_item_metrics.dart';
 import 'package:zenoti_assignment/components/common/revenue_list_filter_bar.dart';
 import 'package:zenoti_assignment/constants.dart';
 import 'package:zenoti_assignment/mock_data.dart';
+import 'package:zenoti_assignment/models/revenue.dart';
 
 typedef Revenue RevenueBuilder(int index);
 
 class RevenueList extends StatelessWidget {
   final RevenueBuilder revenueBuilder;
+  final Revenue selectedRev;
+  final Function(Revenue) onItemTap;
+  final Function() onCloseTap;
 
   const RevenueList({
     this.revenueBuilder = generateRevenue,
+    this.selectedRev,
+    this.onItemTap,
+    this.onCloseTap,
     Key key,
   }) : super(key: key);
 
@@ -21,10 +26,10 @@ class RevenueList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        RevenueItemMetrics(),
+        if (selectedRev != null) RevenueItemMetrics(revenue: selectedRev),
         Padding(
           padding: EdgeInsets.fromLTRB(spacer, 0, spacer, spacer),
-          child: RevenueListFilterBar(),
+          child: RevenueListFilterBar(onCloseTap: onCloseTap),
         ),
         Expanded(
           child: Stack(
@@ -46,7 +51,7 @@ class RevenueList extends StatelessWidget {
 
                   return RevenueItem(
                     onTap: () {
-                      log("Index: $i");
+                      onItemTap(rev);
                     },
                     title: rev.title,
                     amount: rev.amount,

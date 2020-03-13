@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:zenoti_assignment/components/common/pill.dart';
 
 class RevenueListFilterBar extends StatelessWidget {
+  final Function() onCloseTap;
+
   const RevenueListFilterBar({
     Key key,
+    this.onCloseTap,
   }) : super(key: key);
 
   @override
@@ -21,12 +24,19 @@ class RevenueListFilterBar extends StatelessWidget {
           flex: 1,
           child: Container(
             alignment: Alignment.center,
-            child: Container(
-              height: 5.0,
-              width: 50.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color: Colors.white,
+            child: GestureDetector(
+              onTap: () {
+                if (onCloseTap != null) {
+                  onCloseTap();
+                }
+              },
+              child: Container(
+                height: 5.0,
+                width: 50.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  color: Colors.white,
+                ),
               ),
             ),
           ),

@@ -11,7 +11,11 @@ class DrawerMenu extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text('Menu'),
+            child: Text('Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                )),
             decoration: BoxDecoration(
               color: themeBlue,
             ),
@@ -35,7 +39,7 @@ class DrawerMenu extends StatelessWidget {
           ListTile(
             title: Row(
               children: <Widget>[
-                Icon(Icons.settings),
+                Icon(Icons.track_changes),
                 Text('Other'),
               ],
             ),

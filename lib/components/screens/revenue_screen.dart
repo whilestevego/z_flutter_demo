@@ -80,6 +80,7 @@ class _MainScreenState extends State<RevenueScreen> {
           backgroundColor: Colors.transparent,
           drawer: DrawerMenu(),
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             title: Column(
               children: <Widget>[
                 Text(widget.title, style: TextStyle(fontSize: 16.0)),

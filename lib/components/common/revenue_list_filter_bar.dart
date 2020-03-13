@@ -58,7 +58,7 @@ class RevenueListFilterBar extends StatelessWidget {
                   context: context,
                   initialDate: initialDate,
                   firstDate: DateTime(initialDate.year - 20),
-                  lastDate: DateTime(initialDate.year),
+                  lastDate: DateTime(DateTime.now().year + 1, 0),
                 ));
               }
             },

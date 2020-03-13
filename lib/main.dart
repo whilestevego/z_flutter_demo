@@ -89,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
               ],
             ),
             bottom: PreferredSize(
-              preferredSize: Size(0.0, 80.0),
+              preferredSize: Size(0.0, 90.0),
               child: Padding(
                 padding: EdgeInsets.all(spacer),
                 child: StatList(

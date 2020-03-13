@@ -20,19 +20,32 @@ class StatList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(spacer),
+      height: 90,
       decoration: BoxDecoration(
-        color: Colors.white30,
+        color: Colors.white24,
         borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: items
-            .map((sI) => _Stat(
-                  term: sI.term,
-                  detail: sI.detail,
-                  subDetail: sI.subDetail,
-                ))
-            .toList(),
+            .map((sI) => [
+                  Expanded(
+                    child: Container(
+                      child: _Stat(
+                        term: sI.term,
+                        detail: sI.detail,
+                        subDetail: sI.subDetail,
+                      ),
+                    ),
+                  ),
+                  VerticalDivider(
+                    color: Colors.white38,
+                    thickness: 1,
+                  )
+                ])
+            .fold([], (acc, v) => acc + v)
+              ..removeLast(),
       ),
     );
   }
@@ -52,26 +65,25 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: <Widget>[
-          Text(
-            term.toUpperCase(),
-            style: TextStyle(
-                color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: spacer),
-          Text(
-            detail,
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          SizedBox(height: spacer),
-          Text(
-            subDetail,
-            style: TextStyle(color: Colors.white54, fontSize: 13),
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          term.toUpperCase(),
+          style: TextStyle(
+              color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: spacer),
+        Text(
+          detail,
+          style: TextStyle(color: Colors.white, fontSize: 16),
+        ),
+        SizedBox(height: spacer),
+        Text(
+          subDetail,
+          style: TextStyle(color: Colors.white54, fontSize: 13),
+        ),
+      ],
     );
   }
 }
